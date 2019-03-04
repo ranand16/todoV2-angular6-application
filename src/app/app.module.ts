@@ -8,12 +8,14 @@ import { SigninComponent } from './signin/signin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ApiServiceService } from './api-service.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,

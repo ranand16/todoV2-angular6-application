@@ -3,14 +3,17 @@ import { Routes, RouterModule} from '@angular/router';
 
 import { SignupComponent } from './signup/signup.component'; 
 import { SigninComponent } from './signin/signin.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: SignupComponent},
-  { path: 'signin', component: SigninComponent}
+  { path: '', redirectTo: 'signup', pathMatch: 'full'},
+  { path: 'signup', component: SignupComponent},
+  { path: 'signin', component: SigninComponent},
+  { path: 'dashboard', component: DashboardComponent}
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ useHash: true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

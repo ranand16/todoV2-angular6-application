@@ -17,15 +17,12 @@ export class SignupComponent implements OnInit {
     this.model.data = [];
     console.log("Hey you!!");
     this._apiService.signup(this.model).subscribe(data=>{
-      // if(this.model.faliureMessage == "User Registration Failed"){
-      //   console.log("User Registeration Failed!!");
-      // } else{
-      //   console.log("User Registeration Success!!");
-      //   this.router.navigate(['/signin']);
-      // }
-      console.log(this.model);
-      console.log(data);
-      
+      if(data["successMessage"]){
+        console.log("User Registeration successful!!");
+        this.router.navigate(['/signin']);
+      } else{
+        console.log("User Registeration failed");
+      }
     },
     error=>{
       console.log("there was an error.");
