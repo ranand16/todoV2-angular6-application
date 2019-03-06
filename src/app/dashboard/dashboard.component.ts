@@ -12,4 +12,36 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout(){
+
+  }
+
+  isLoggedIn(){
+
+  }
+
+  createTask(){
+
+  }
+
+  onCompletedClick(todo){
+
+  }
+
+  updateTask(todo){
+
+  }
+
+  onEditClick(todo){
+
+  }
+
+  onCancelClick(todo){
+
+  }
+
+  deleteTask(todo){
+
+  }
+
 }
