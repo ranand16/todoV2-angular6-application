@@ -1,7 +1,7 @@
 <div class="container">
   <h3>Dashboard</h3>
   <div class="row">
-    <a ui-sref="user" class="nav-link" ng-if="loggedIn()" ng-click="logout()">LogOut</a>
+    <a ui-sref="user" class="nav-link" ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
   </div>  <form ng-submit="createTask()">
     <input class="form-control todos__create-input" placeholder="What work do I have?" ng-model="createTaskInput">
     <button class="btn btn-primary todos__create-button" type="button" name="button">Create Task</button>
