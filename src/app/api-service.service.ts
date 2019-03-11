@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 /**
  * @author <Rishabh Anand>
  * @email <ranand16@gmail.com>
@@ -32,8 +32,8 @@ export class ApiServiceService {
   newTask(model: any){
     return this.httpClient.patch('https://todoapi-v2.herokuapp.com/api/', model);
   }
-  getTasks(model: any){
-    return this.httpClient.get('https://todoapi-v2.herokuapp.com/api/', model);
+  getTasks(headers: any, model: any){
+    return this.httpClient.get('https://todoapi-v2.herokuapp.com/api/', headers, model);
   }
   editTask(userId: any, todoId: any, model: any){
     return this.httpClient.patch('https://todoapi-v2.herokuapp.com/api/:'+userId+'/:'+todoId, model);

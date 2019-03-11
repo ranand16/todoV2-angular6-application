@@ -2,21 +2,21 @@
   <h3>Dashboard</h3>
   <div class="row">
     <a ui-sref="user" class="nav-link" ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
-  </div>  <form ng-submit="createTask()">
+  </div>  
+  <form ng-submit="createTask()">
     <input class="form-control todos__create-input" placeholder="What work do I have?" ng-model="createTaskInput">
     <button class="btn btn-primary todos__create-button" type="button" name="button">Create Task</button>
-
+  </form>
   <table class="table table-striped">
     <tr>
       <th>Completed</th>
       <th>Task</th>
       <th>Actions</th>
     </tr>
-    <tr ng-repeat="todo in todos">
+    <!-- <tr ng-repeat="todo in todos">
       <td>
         <input type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
       </td>
-      <!-- "task completed" class will be added to the span when todo "isCompleted" is true-->
       <td>
         <span ng-class="{'todos__task--completed':todo.isCompleted}" ng-if="!todo.isEditing" class="todos__task">{{todo.task}}</span>
         <form ng-submit="updateTask(todo)">
@@ -38,7 +38,9 @@
         <span ng-click="onCancelClick(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-remove-sign"></span>
 
       </td>
-    </tr>
+    </tr> 
+  
+      "task completed" class will be added to the span when todo "isCompleted" is true --> 
   </table>
 </div>
  

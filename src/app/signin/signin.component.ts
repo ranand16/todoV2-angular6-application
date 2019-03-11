@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServiceService } from '../api-service.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-signin',
@@ -17,11 +18,19 @@ export class SigninComponent implements OnInit {
   signin(){
     this._apiService.login(this.model).subscribe(data=>{
       if(data["success"]){
+        console.log(data);
+        this.setSession(data);
         // succesfully logged in
         this.router.navigate(['/dashboard']);
       } else{
         // invalid credentials
       }
     });
+  }
+
+  private setSession(authResult) {
+    const expiresAt = moment().add(authResult.expiresIn,'second');
+    localStorage.setItem('id_token', authResult.token);
+    localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
   }
 }
