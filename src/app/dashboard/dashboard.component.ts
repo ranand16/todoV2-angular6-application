@@ -18,14 +18,11 @@ export class DashboardComponent implements OnInit {
   model = {};
 
   ngOnInit() {
-    if(this.isLoggedIn && this.getToken()){
+    if(this.isLoggedIn){
       // here we will get all the tasks from server and display it on the dashboard
-      let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                               .set('token', 'Bearer ' + this.getToken());
-
-      this.todoServ.getTasks(this.model, headers).subscribe((data)=>{
+      this.todoServ.getTasks().subscribe((data)=>{
         console.log(data);
-        // this.todoList.push(data);
+        this.todoList.push(data);
       });
     } else{
       this.router.navigate(['/signin']); 
@@ -76,7 +73,4 @@ export class DashboardComponent implements OnInit {
     return !this.isLoggedIn();
   }
 
-  getToken(){
-    return window.localStorage.getItem('id_token');
-  }
 }

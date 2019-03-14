@@ -18,7 +18,6 @@ export class SigninComponent implements OnInit {
   signin(){
     this._apiService.login(this.model).subscribe(data=>{
       if(data["success"]){
-        console.log(data);
         this.setSession(data);
         // succesfully logged in
         this.router.navigate(['/dashboard']);
