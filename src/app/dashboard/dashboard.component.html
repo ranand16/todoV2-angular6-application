@@ -1,11 +1,19 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Title Page-->
+    <title>Signin Form</title>
+</head>
+<body>
+
+  <div class="container">
   <h3>Dashboard</h3>
   <div class="row">
-    <a ui-sref="user" class="nav-link" ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
+    <a class="" ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
   </div>  
   <form ng-submit="createTask()">
-    <input class="form-control todos__create-input" placeholder="What work do I have?" ng-model="createTaskInput">
-    <button class="btn btn-primary todos__create-button" type="button" name="button">Create Task</button>
+    <input class="" placeholder="What work do I have?" ng-model="createTaskInput">
+    <button class="btn btn-primary" type="button" name="button">Create Task</button>
   </form>
   <table class="table table-striped">
     <tr>
@@ -13,14 +21,14 @@
       <th>Task</th>
       <th>Actions</th>
     </tr>
-    <!-- <tr ng-repeat="todo in todos">
+    <tr ng-repeat="todo in todoList">
       <td>
         <input type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
       </td>
       <td>
-        <span ng-class="{'todos__task--completed':todo.isCompleted}" ng-if="!todo.isEditing" class="todos__task">{{todo.task}}</span>
+        <span ng-if="!todo.isEditing" class="todos__task">{{todo.task}}</span>
         <form ng-submit="updateTask(todo)">
-          <input ng-if="todo.isEditing" class="form-control todos__update-input" ng-value="todo.task" ng-model="todo.updatedTask">
+          <input ng-if="todo.isEditing" class="form-control" ng-value="todo.task" ng-model="todo.updatedTask">
         </form>
       </td>
       <td>
@@ -39,8 +47,8 @@
 
       </td>
     </tr> 
-  
-      "task completed" class will be added to the span when todo "isCompleted" is true --> 
+      <!-- "task completed" class will be added to the span when todo "isCompleted" is true  -->
   </table>
-</div>
- 
+  </div>
+</body>
+</html>

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
-import { Todo } from '../Interface/Todo';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +12,8 @@ export class DashboardComponent implements OnInit {
 
   constructor(private todoServ: ApiServiceService, private router: Router) { 
   }
-  todoList: Todo[];
+  todo: any = '';
+  todoList: any[]= [];
   model = {};
 
   ngOnInit() {
@@ -23,6 +22,7 @@ export class DashboardComponent implements OnInit {
       this.todoServ.getTasks().subscribe((data)=>{
         console.log(data);
         this.todoList.push(data);
+
       });
     } else{
       this.router.navigate(['/signin']); 
@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(){
+    console.log("logged out!");
     this.router.navigate(['/signin']);    
     localStorage.removeItem("id_token");
     localStorage.removeItem("expires_at");
