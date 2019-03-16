@@ -19,9 +19,9 @@ export class DashboardComponent implements OnInit {
     if(this.isLoggedIn){
       // here we will get all the tasks from server and display it on the dashboard
       this.todoServ.getTasks().subscribe((data)=>{
-        console.log(data['todos'][0]);
+        console.log((data['todos'])[0]);
         if(data['todos'] != null){
-          this.todoList.push(data['todos'][0]);
+          this.todoList.push((data['todos'])[0]);
         }
       });
     } else{
