@@ -5,35 +5,21 @@
     <title>Signin Form</title>
 </head>
 <body>
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Login Form</h2>
-                    <form (ngSubmit)="signin()" method="POST" action="">
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Email/Username</label>
-                                    <input [(ngModel)]="model.username" #username="ngModel" placeholder="username" required="required"  class="input--style-4" type="username" name="username">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input [(ngModel)]="model.password" #password="ngModel" placeholder="password" required="required"  class="input--style-4" type="password" name="password">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
-                    </form>
-                    <a routerLink="/signup">Signup</a>
+    <div class="card border-success mb-3" style="max-width: 500px;">
+        <h2 class="card-header">Login Form</h2>
+        <div class="card-body">
+            <form (ngSubmit)="signin()" #f="ngForm" method="POST" action="">       
+                <div class="form-group">
+                    <label class="label">Email/Username</label>
+                    <input [(ngModel)]="model.username" #username="ngModel" placeholder="Username" required="required"  class="form-control" type="username" name="username">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label class="label">Password</label>
+                    <input [(ngModel)]="model.password" #password="ngModel" placeholder="Password" required="required"  class="form-control" type="password" name="password">
+                </div>
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+            <a routerLink="/signup">Signup</a>
         </div>
     </div>
 </body>

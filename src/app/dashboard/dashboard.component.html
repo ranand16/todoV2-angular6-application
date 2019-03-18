@@ -6,47 +6,38 @@
 </head>
 <body>
   <div class="container">
-  <h3>Dashboard</h3>
-  <div class="row">
-    <a class="" ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
-  </div>  
-  <form ng-submit="createTask()">
-    <input class="" placeholder="What work do I have?" ng-model="createTaskInput">
-    <button class="btn btn-primary" type="button" name="button">Create Task</button>
-  </form>
-  <table class="table table-striped">
-    <tr>
-      <th>Completed</th>
-      <th>Task</th>
-      <th>Actions</th>
-    </tr>
-    <tr *ngFor="let todo of todoList">
-      <td>
-        <input type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
-      </td>
-      <td>
-        <span ng-if="!todo.isEditing" class="todos__task">{{todo.task}}</span>
-        <form ng-submit="updateTask(todo)">
-          <input ng-if="todo.isEditing" class="form-control" ng-value="todo.task" ng-model="todo.updatedTask">
-        </form>
-      </td>
-      <td>
-        <span
-          ng-if="!todo.isEditing"
-          ng-click="onEditClick(todo)"
-          class="glyphicon glyphicon-edit">
-        </span>
-        <span
-          ng-if="!todo.isEditing"
-          ng-click="deleteTask(todo)"
-          class="glyphicon glyphicon-remove">
-        </span>
-        <span ng-click="updateTask(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-floppy-disk"></span>
-        <span ng-click="onCancelClick(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-remove-sign"></span>
-      </td>
-    </tr> 
-      <!-- "task completed" class will be added to the span when todo "isCompleted" is true  -->
-  </table>
+    <h3>Dashboard</h3>
+    <div class="row">
+      <a ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
+    </div>  
+    <form ng-submit="createTask()">
+      <input class="" placeholder="What work do I have?" ng-model="createTaskInput">
+      <button class="btn btn-primary" type="button" name="button">Create Task</button>
+    </form>
+    <table class="table table-striped">
+      <tr>
+        <th>Completed</th>
+        <th>Task</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let todo of todoList">
+        <td>
+          <input type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
+        </td>
+        <td>
+          <span ng-if="!todo.isEditing" class="todos__task">{{todo.task}}</span>
+          <form ng-submit="updateTask(todo)">
+            <input ng-if="todo.isEditing" class="form-control" ng-value="todo.task" ng-model="todo.updatedTask">
+          </form>
+        </td>
+        <td>
+          <span ng-if="!todo.isEditing" ng-click="onEditClick(todo)" class="glyphicon glyphicon-edit"></span>
+          <span ng-if="!todo.isEditing" ng-click="deleteTask(todo)" class="glyphicon glyphicon-remove"></span>
+          <span ng-click="updateTask(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-floppy-disk"></span>
+          <span ng-click="onCancelClick(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-remove-sign"></span>
+        </td>
+      </tr> 
+    </table>
   </div>
 </body>
 </html>
