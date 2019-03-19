@@ -30,13 +30,13 @@ export class ApiServiceService {
 
   // todo api services
   newTask(model: any){
-
-    return this.httpClient.patch('https://todoapi-v2.herokuapp.com/api/', model);
+    console.log(this.getToken());
+    let headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'token': this.getToken()});
+    return this.httpClient.put('https://todoapi-v2.herokuapp.com/api/', model, {headers});
   }
   getTasks(){
     let headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'token': this.getToken()});
     return this.httpClient.get('https://todoapi-v2.herokuapp.com/api/', {headers});
-
   }
 
   editTask(userId: any, todoId: any, model: any){

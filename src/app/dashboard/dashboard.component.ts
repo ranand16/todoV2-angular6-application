@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../api-service.service';
 import * as moment from 'moment';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private todoServ: ApiServiceService, private router: Router) { 
-  }
+  constructor(private todoServ: ApiServiceService, private router: Router) {}
   todoList: any[]= [];
   model = {};
 
@@ -20,7 +19,7 @@ export class DashboardComponent implements OnInit {
       // here we will get all the tasks from server and display it on the dashboard
       this.todoServ.getTasks().subscribe((data)=>{
         console.log((data['todos'])[0]);
-        if(data['todos'] != null){
+        if(data['todos'] != null && data['todos']!= ''){
           this.todoList.push((data['todos'])[0]);
         }
       });
@@ -36,8 +35,15 @@ export class DashboardComponent implements OnInit {
     localStorage.removeItem("expires_at");
   }
 
-  createTask(){
-
+  createTask(form: NgForm){
+    this.model ={
+      task: form.value.task,
+      isCompleted: false,
+      isEditing: false
+    };
+    this.todoServ.newTask(this.model).subscribe((data)=>{
+      console.log(data);
+    });
   }
 
   onCompletedClick(todo){

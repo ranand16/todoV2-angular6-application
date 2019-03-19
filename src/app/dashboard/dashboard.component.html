@@ -6,13 +6,17 @@
 </head>
 <body>
   <div class="container">
-    <h3>Dashboard</h3>
-    <div class="row">
-      <a ng-if="isLoggedIn()" ng-click="logout()">LogOut</a>
-    </div>  
-    <form ng-submit="createTask()">
-      <input class="" placeholder="What work do I have?" ng-model="createTaskInput">
-      <button class="btn btn-primary" type="button" name="button">Create Task</button>
+    <h3>Dashboard </h3>
+    <div class="form-group">
+      <button id="logout_btn" ng-if="isLoggedIn()" ng-click="logout()">LogOut</button>
+    </div>
+    <form #signupForm="ngForm" (ngSubmit)="createTask(signupForm)">
+        <div class="form-group">
+          <input class="form-control" type="text" name="task" id="task" placeholder="What work do I have?" ngModel>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit" name="button">Create Task</button>        
+        </div>
     </form>
     <table class="table table-striped">
       <tr>
@@ -22,10 +26,10 @@
       </tr>
       <tr *ngFor="let todo of todoList">
         <td>
-          <input type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
+          <input class="form-control" type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
         </td>
         <td>
-          <span ng-if="!todo.isEditing" class="todos__task">{{todo.task}}</span>
+          <span ng-if="!todo.isEditing" class="">{{todo.task}}</span>
           <form ng-submit="updateTask(todo)">
             <input ng-if="todo.isEditing" class="form-control" ng-value="todo.task" ng-model="todo.updatedTask">
           </form>
