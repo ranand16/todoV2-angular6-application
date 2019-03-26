@@ -32,7 +32,7 @@ export class ApiServiceService {
   newTask(model: any){
     console.log(this.getToken());
     let headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'token': this.getToken()});
-    return this.httpClient.put('https://todoapi-v2.herokuapp.com/api/', model, {headers});
+    return this.httpClient.patch('https://todoapi-v2.herokuapp.com/api/', model, {headers});
   }
   getTasks(){
     let headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded', 'token': this.getToken()});
