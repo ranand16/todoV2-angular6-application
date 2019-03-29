@@ -8,7 +8,7 @@
   <div class="container">
     <h3>Dashboard </h3>
     <div class="form-group">
-      <button id="logout_btn" ng-if="isLoggedIn()" ng-click="logout()">LogOut</button>
+      <button id="logout_btn"  *ngIf="isLoggedIn()" (click)="logout()">LogOut</button>
     </div>
     <form #signupForm="ngForm" (ngSubmit)="createTask(signupForm)">
         <div class="form-group">
@@ -26,19 +26,19 @@
       </tr>
       <tr *ngFor="let todo of todoList">
         <td>
-          <input class="form-control" type="checkbox" ng-checked="todo.isCompleted" ng-click="onCompletedClick(todo)">
+          <input class="form-control" type="checkbox" ng-checked="todo.isCompleted" (click)="onCompletedClick(todo)">
         </td>
         <td>
-          <span ng-if="!todo.isEditing" class="">{{todo.task}}</span>
-          <form ng-submit="updateTask(todo)">
-            <input ng-if="todo.isEditing" class="form-control" ng-value="todo.task" ng-model="todo.updatedTask">
+          <span *ngIf="!todo.isEditing" class="">{{todo.task}}</span>
+          <form ng-submit="updateTask(todo)" *ngIf="todo.isEditing">
+            <input  class="form-control" ng-value="todo.task">
           </form>
         </td>
         <td>
-          <span ng-if="!todo.isEditing" ng-click="onEditClick(todo)" class="glyphicon glyphicon-edit"></span>
-          <span ng-if="!todo.isEditing" ng-click="deleteTask(todo)" class="glyphicon glyphicon-remove"></span>
-          <span ng-click="updateTask(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-floppy-disk"></span>
-          <span ng-click="onCancelClick(todo)" ng-if="todo.isEditing" class="btn glyphicon glyphicon-remove-sign"></span>
+          <span *ngIf="!todo.isEditing" (click)="onEditClick(todo)" class="glyphicon glyphicon-edit">Edit </span>
+          <span *ngIf="!todo.isEditing" (click)="deleteTask(todo)" class="glyphicon glyphicon-remove">Delete </span>
+          <span (click)="updateTask(todo)" *ngIf="todo.isEditing" class="btn glyphicon glyphicon-floppy-disk">Update </span>
+          <span (click)="onCancelClick(todo)" *ngIf="todo.isEditing" class="btn glyphicon glyphicon-remove-sign">Cancel </span>
         </td>
       </tr> 
     </table>
